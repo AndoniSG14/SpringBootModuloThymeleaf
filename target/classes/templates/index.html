@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- IMPORTAR CSS ONLINE BOOTSTRAP -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+<meta charset="ISO-8859-1">
+<title>LISTA PERSONAS</title>
+</head>
+<body>
+ <div class="container mt-4">
+    <a th:href="@{/new}" class="btn btn-primary">Agregar Persona</a>
+    
+     <br><br>
+     
+     <table class="table table-dark table-striped">
+       <thead>
+         <tr>
+           <th>ID</th>
+           <th>NOMBRE</th>
+           <th>TELEFONO</th>
+           <th>ACCIONES</th>
+         </tr>
+       </thead>
+       <tbody>
+         <tr th:each="p:${personas}">
+           <td th:text="${p.id}"></td>  
+           <td th:text="${p.nombre}"></td>
+           <td th:text="${p.telefono}"></td>
+           <td>
+             <a th:href="@{/editar/}+${p.id}" class="btn btn-warning">Editar</a>
+            <!--  <a th:href="@{/eliminar/}+${p.id}" class="mx-3 btn btn-danger">Eliminar</a> -->
+             <a th:onclick="eliminar([[${p.id}]])" class="mx-3 btn btn-danger">Eliminar</a>
+           </td>  
+          
+         </tr>
+       </tbody>
+     </table>
+     
+ <!-- CDN DE JQUERY -->
+ <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+ 
+ <!-- CDN SWEET ALERT -->
+ <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+ 
+ <!-- IMPORT FILE FUNCIONES DE JAVA SCRIPT -->
+ <script src="funciones.js"></script>
+ 
+ 
+ </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
